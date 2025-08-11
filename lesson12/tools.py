@@ -1,0 +1,32 @@
+class GuessGesture():
+    @staticmethod
+    def input_gesture() -> Literal[0 ,1 ,2 ,'q']:
+        while True:
+            gesture = input("輸入0:剪刀/1:石頭/2:布(輸入q退出):")
+            if gesture == "0":
+                return 0
+            elif gesture == "1":
+                return 1
+            elif gesture == "2":
+                return 2
+            elif gesture == "q":
+                return "q"
+            else:
+                print("請輸入正確選項")
+
+    @staticmethod
+    def compare(player_gesture: int, opponent_gesture: int, record: dict):
+        #0:剪刀
+        #1:石頭
+        #2:布
+        if (player_gesture == 0 and opponent_gesture == 2)\
+            or (player_gesture == 1 and opponent_gesture == 0)\
+            or (player_gesture == 2 and opponent_gesture == 1):
+            print("你贏了!")
+            record["勝"] += 1
+        elif player_gesture == opponent_gesture:
+            print("平手!")
+            record["平"] += 1
+        else:
+            print("你輸了!")
+            record["敗"] += 1
